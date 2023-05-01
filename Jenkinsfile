@@ -13,7 +13,7 @@ node {
 	stage('2. - Build from Maven '){
 		echo "Building code now "
 		
-		sh "$(mavenName)/bin/mvn clean package "
+		sh "${mavenName}/bin/mvn clean package "
 	} 
 
 	stage('3. - Quality Code Test from Sonar ') {
