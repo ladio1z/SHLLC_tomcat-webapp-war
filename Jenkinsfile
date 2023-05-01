@@ -2,7 +2,7 @@
 node {
 	def mavenName = tool name: "maven3"
 
-	properties([ pipelineTriggers([pollSCM('* * * * *')]) ])
+	 // properties([ pipelineTriggers([pollSCM('* * * * *')]) ])
 
 	stage('1. - Clone from SCM '){
 		echo "Cloning the code now"
