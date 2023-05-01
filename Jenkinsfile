@@ -22,7 +22,7 @@ node {
 		sh "${mavenName}/bin/mvn sonar:sonar "
 	}
 
-	stage('4. - Artifactory of Build Artifact to Nexus '){
+	stage('4. - Sending Build Artifact to Nexus '){
 	       echo "Moving Build Artifact to Artifactory"
 
 	       sh "${mavenName}/bin/mvn deploy"
