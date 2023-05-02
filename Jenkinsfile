@@ -13,13 +13,13 @@ node {
 	stage('2. - Build from Maven '){
 		echo "Building code now "
 		
-		sh "${mavenName}/bin/mvn clean package "
+		sh "${mavenName}/bin/mvn clean package"
 	} 
 
 	stage('3. - Quality Code Test from Sonar ') {
 		echo "Quality Code Now "
 
-		sh "${mavenName}/bin/mvn sonar:sonar "
+		sh "${mavenName}/bin/mvn sonar:sonar"
 	}
 
 	stage('4. - Sending Build Artifact to Nexus '){
