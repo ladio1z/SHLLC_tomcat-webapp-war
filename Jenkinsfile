@@ -36,11 +36,11 @@ tools{
 
         stage('4 - Storing Artifact in Nexus'){
 			steps{
-				ehco "Keep artifact in Artifactory - Nexus"
+				echo "Keep artifact in Artifactory - Nexus"
 				sh "mvn deploy"
 			}
 		}
-        
+
    }
 
 }
