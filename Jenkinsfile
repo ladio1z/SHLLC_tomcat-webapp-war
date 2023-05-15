@@ -1,7 +1,7 @@
 pipeline { 
 
     agent any
-    
+
 tools{
 		maven 'maven3'
 	}
@@ -15,8 +15,7 @@ tools{
 			steps{
 				echo "Cloning from SCM "
 				
-				git branch: 'declarative', changelog: false, 
-                poll: false, url: 'https://github.com/ladio1z/SHLLC_tomcat-webapp-war/'
+				git branch: 'declarative', changelog: false, poll: false, url: 'https://github.com/ladio1z/SHLLC_tomcat-webapp-war/'
 			}
 		}
    }
