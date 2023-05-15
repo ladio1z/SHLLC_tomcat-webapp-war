@@ -20,14 +20,20 @@ tools{
 			}
 		}
 
-        stage('1 - Build Artifacts'){
+        stage('2 - Build Artifacts'){
 			steps{
 				echo " Building an Artifact"
 				sh "mvn clean package"
 			}
 		}
 
-        
+        stage('3 - Sonar'){
+			steps{
+				echo "Code Quality Test"
+				sh "mvn sonar:sonar"
+			}
+		}
+
 
    }
 
