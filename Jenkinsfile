@@ -11,13 +11,24 @@ tools{
 	}
 
    stages{
-		stage('1 - Clone from SCM'){
+		
+        stage('1 - Clone from SCM'){
 			steps{
 				echo "Cloning from SCM "
 				
 				git branch: 'declarative', changelog: false, poll: false, url: 'https://github.com/ladio1z/SHLLC_tomcat-webapp-war/'
 			}
 		}
+
+        stage('1 - Build Artifacts'){
+			steps{
+				echo " Building an Artifact"
+				sh "mvn clean package"
+			}
+		}
+
+        
+
    }
 
 }
