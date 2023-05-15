@@ -1,12 +1,12 @@
 
-Pipeline {
+Pipeline{
 	agent any
 
 	tools{
 		maven 'maven3'
 	}
-	
-	triggers {
+
+	triggers{
 		pollSCM('* * * * *')
 	}
 
