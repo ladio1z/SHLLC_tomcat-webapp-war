@@ -6,10 +6,10 @@ tools{
 		maven 'maven3'
 	}
 
-	triggers{
+	/* triggers{
 		pollSCM('* * * * *')
 	}
-
+    */
    stages{
 		
         stage('1 - Clone from SCM'){
