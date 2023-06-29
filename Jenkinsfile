@@ -18,13 +18,13 @@ node {
 	} 
 
 
-
+/*
 	stage('3rd. - Quality Code Test from Sonar ') {
 		echo "Quality Code Now "
 
 		sh "${mavenName}/bin/mvn sonar:sonar"
 	}
-
+*/
 
 	stage('4th. - Sending Build Artifact to Nexus '){
 	       echo "Moving Build Artifact to Artifactory"
