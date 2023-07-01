@@ -32,6 +32,10 @@ node {
 	stage('4th. - Needing Confirmation ')	{
               
 	      echo "Needing Confirmation to Integration Nexus"
+           
+	      timeout(15) {
+                input message: "Please Confirm to Integration Nexus"
+               }
 
         }
 	
