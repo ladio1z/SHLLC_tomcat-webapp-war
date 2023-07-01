@@ -55,7 +55,7 @@ pipeline {
 		stage('5 - Storing Artifact in Nexus'){
                         steps{
                                 echo "Keep artifact in Artifactory - Nexus"
-                                sh "mvn deploy"
+                                sh "mvn install"
                         }
                 }
               
