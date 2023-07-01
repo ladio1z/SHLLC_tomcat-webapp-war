@@ -33,7 +33,7 @@ node {
               
 	      echo "Needing Confirmation to Integration Nexus"
            
-	      timeout(15) {
+	      timeout(10) {
                 input message: "Please Confirm to Integration Nexus"
                }
 
