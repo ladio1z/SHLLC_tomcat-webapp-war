@@ -5,7 +5,7 @@
 	<groupId>com.mt</groupId>
 	<artifactId>tomcat-webapp</artifactId>
 	<packaging>war</packaging>
-	<version>1.0.5-SNAPSHOT</version>
+	<version>1.0.1-SNAPSHOT</version>
 	
 	<name>tomcat-webapp</name>
 
@@ -93,14 +93,14 @@
 	<distributionManagement>
 	    <repository>
 	      <id>nexus</id>
-	      <name> Nexus Repository</name>
-	      <url> http://192.168.33.27:8081/repository/maven-releases/ </url>
+	      <name>Nexus Repository</name>
+	      <url>http://192.168.33.27:8081/repository/tomcat_prod_repo/</url>
 	    </repository>
 	    
 	    <snapshotRepository>
 	      <id>nexus</id>
-	      <name> Nexus Repository </name>
-	      <url> http://192.168.33.27:8081/repository/maven-snapshots/ </url>
+	      <name>Nexus Repository</name>
+	      <url>http://192.168.33.27:8081/repository/tomcat_dev_repo/</url>
 	    </snapshotRepository>
 	    
 	</distributionManagement>

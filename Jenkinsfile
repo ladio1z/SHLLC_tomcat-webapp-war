@@ -1,50 +1,66 @@
+pipeline { 
 
-node {
-	def mavenName = tool name: "maven3"
+	agent any
 
-	 // properties([ pipelineTriggers([pollSCM('H/5 * * * *')]) ])
-
-	stage('1st. - Clone from SCM '){
-		
-		echo "Cloning the code now"
-
-		git branch: 'scripted', changelog: false, poll: false, url: 'https://github.com/ladio1z/SHLLC_tomcat-webapp-war/'	
+	tools{
+		maven 'maven3'
 	}
 
 
-	stage('2nd. - Build from Maven '){
-		
-		echo "Building code now "
-		
-		sh "${mavenName}/bin/mvn clean package"
-	} 
-
-
-/*
-	stage('3rd. - Quality Code Test from Sonar ') {
-		
-		echo "Quality Code Now "
-
-		sh "${mavenName}/bin/mvn sonar:sonar"
+	/* triggers{
+		pollSCM('* * * * *')
 	}
-*/
+       */
 
-	stage('4th. - Needing Confirmation ')	{
-              
-	      echo "Needing Confirmation to Integration Nexus"
-           
-	      timeout(10) {
-                input message: "Please Confirm to Integration Nexus"
-               }
+	stages{
 
-        }
-	
-	stage('5th. - Sending Build Artifact to Nexus '){
+        	stage('1 - Clone from SCM'){
+			steps{
+				echo "Cloning from SCM "
+		
+				git branch: 'scripted', changelog: false, poll: false, url: 'https://github.com/ladio1z/SHLLC_tomcat-webapp-war/'	
+			}
+		}
+
+        	stage('2 - Build Artifacts'){
+			steps{
+				echo " Building an Artifact"
+				sh "mvn clean package"
+			}
+		}
+
+		
+		/*
+        	stage('3 - Sonar'){
+			steps{
+				echo "Code Quality Test"
+				sh "mvn sonar:sonar"
+			}
+		}
+		*/
+
+
+        	stage('4 - Needing Confirmation before'){
+			steps{
+				echo "Needing Confimation"
+                                
+                          	timeout(15) {
+					input message: "Please approve deployment "
+				}           
+			}
+		}
+
 	       
-	       echo "Moving Build Artifact to Artifactory"
-
-	       sh "${mavenName}/bin/mvn deploy"
-	}
+	        	
+		stage('5 - Storing Artifact in Nexus'){
+                        steps{
+                                echo "Keep artifact in Artifactory - Nexus"
+                                sh "mvn deploy"
+                        }
+                }
+              
+   }
 
 
 }
+
