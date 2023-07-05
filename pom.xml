@@ -5,11 +5,7 @@
 	<groupId>com.mt</groupId>
 	<artifactId>tomcat-webapp</artifactId>
 	<packaging>war</packaging>
-<<<<<<< HEAD
 	<version>1.0.5-SNAPSHOT</version>
-=======
-	<version>1.0.2</version>
->>>>>>> 9968ac4d5966bb5eda3ec34ab3a0f508b5212817
 	
 	<name>tomcat-webapp</name>
 
