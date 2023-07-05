@@ -29,7 +29,15 @@ node {
 	}
 */
 
-	stage('4th. - Needing Confirmation ')	{
+	stage('4th. - Sending Build Artifact to Nexus '){
+
+               echo "Moving Build Artifact to Artifactory"
+
+               sh "${mavenName}/bin/mvn deploy"
+        }
+
+
+	stage('5th. - Needing Confirmation ')	{
               
 	      echo "Needing Confirmation to Integration Nexus"
            
@@ -39,11 +47,14 @@ node {
 
         }
 	
-	stage('5th. - Sending Build Artifact to Nexus '){
+	stage('6th. - Deploying the Build Artifact to Tomcat '){
 	       
-	       echo "Moving Build Artifact to Artifactory"
-
-	       sh "${mavenName}/bin/mvn deploy"
+	       echo "Deploying Artifacts to Tomcat"
+              
+	      deploy adapters: [tomcat9(credentialsId: 'Admin_Tomcat', 
+	                        path: '', url: 'http://192.168.43.212:8880/')],
+				contextPath: null, onFailure: false, war: 'target/*.war'
+	      
 	}
 
 
