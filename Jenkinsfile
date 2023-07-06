@@ -18,8 +18,8 @@ pipeline {
 			steps{
 				echo "Cloning from SCM "
 		
-				git branch: 'declarative2', changelog: false, poll: false, url: 'https://github.com/ladio1z/SHLLC_tomcat-webapp-war.git'	
-			}
+				git branch: 'declarative2', changelog: false, poll: false, 
+				     url: 'https://github.com/ladio1z/SHLLC_tomcat-webapp-war.git'				}
 		}
 
         	stage('2 - Build Artifacts'){
@@ -39,8 +39,15 @@ pipeline {
 		}
 		*/
 
+               stage('4 - Storing Artifact in Nexus'){
+                          steps{
+                                  echo "Keep artifact in Artifactory - Nexus"
+                                  sh "mvn deploy"
+                          }
+                  }
 
-        	stage('4 - Needing Confirmation before'){
+
+        	stage('5 - Needing Confirmation before'){
 			steps{
 				echo "Needing Confimation"
                                 
@@ -50,17 +57,17 @@ pipeline {
 			}
 		}
 
-	       
-	        	
-		stage('5 - Storing Artifact in Nexus'){
+	       	        	
+		stage('6 - Deploying Build Artifact to Tomcat '){
                         steps{
-                                echo "Keep artifact in Artifactory - Nexus"
-                                sh "mvn deploy"
-                        }
-                }
+				echo "Deploy the Artifact to Tomcat "
+                                
+				deploy adapters: [tomcat9(credentialsId: 'Admin_Tomcat',
+				               path: '', url: 'http://192.168.43.212:8880/')],
+					contextPath: null, onFailure: false, war: '**/*.war'
+                            }
+                 }
               
-   }
-
+       }
 
 }
-
