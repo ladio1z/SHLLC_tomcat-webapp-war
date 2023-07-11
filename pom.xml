@@ -94,7 +94,7 @@
 	    <repository>
 	      <id>nexus</id>
 	      <name>Nexus Repository</name>
-	      <ur>http://192.168.33.27:8081/repository/tomcat_prod_repo/</url>
+	      <url>http://192.168.33.27:8081/repository/tomcat_prod_repo/</url>
 	    </repository>
 	    
 	    <snapshotRepository>
