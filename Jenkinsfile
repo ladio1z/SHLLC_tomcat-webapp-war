@@ -7,8 +7,10 @@ node {
 	stage('1st. - Clone from SCM '){
 		
 		echo "Cloning the code now"
+                
+		git branch: 'scripted', changelog: false, poll: false, 
+		          url: 'https://github.com/ladio1z/SHLLC_tomcat-webapp-war.git'
 
-		git branch: 'scripted', changelog: false, poll: false, url: 'https://github.com/ladio1z/SHLLC_tomcat-webapp-war/'	
 	}
 
 
@@ -47,14 +49,14 @@ node {
 
         }
 	
+	
 	stage('6th. - Deploying the Build Artifact to Tomcat '){
 	       
 	       echo "Deploying Artifacts to Tomcat"
-              
-	      deploy adapters: [tomcat9(credentialsId: 'Admin_Tomcat', 
-	                        path: '', url: 'http://192.168.43.212:8880/')],
-				contextPath: null, onFailure: false, war: 'target/*.war'
-	      
+        
+              deploy adapters: [tomcat9(credentialsId: 'Tomcat_Admin', 
+	                      path: '', url: 'http://192.168.43.212:8880/')], 
+			      contextPath: null, onFailure: false, war: 'target/*.war'     
 	}
 
 
