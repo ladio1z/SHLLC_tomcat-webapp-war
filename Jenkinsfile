@@ -17,9 +17,9 @@ pipeline {
         	stage('1 - Clone from SCM'){
 			steps{
 				echo "Cloning from SCM "
-		
-				git branch: 'declarative', changelog: false, poll: false, 
-				             url: 'https://github.com/ladio1z/SHLLC_tomcat-webapp-war/'	
+		                
+                                git branch: 'declarative', changelog: false, poll: false,
+				            url: 'https://github.com/ladio1z/SHLLC_tomcat-webapp-war.git'
 			}
 		}
 
@@ -64,10 +64,11 @@ pipeline {
                         steps{
                                 echo "Deploy an artifact to Tomcat"
                                 
-				deploy adapters: [tomcat9(credentialsId: 'Admin_Tomcat',
-                                	path: '', url: 'http://192.168.43.212:8880/')],
-	                                contextPath: null, onFailure: false, war: 'target/*.war'
-                        }
+                                deploy adapters: [tomcat9(credentialsId: 'Tomcat_Admin', 
+				                 path: '', url: 'http://192.168.43.212:8880/')], 
+						 contextPath: null, onFailure: false, war: '**/*.war'
+
+			 }
                   }  
           }
 
