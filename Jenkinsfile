@@ -59,5 +59,18 @@ node {
 			       contextPath: null, onFailure: false, war: 'target/*war '    
 	}
 
+	stage(' 7th. - Trigging the Declarative Pipeline '){
+              
+	      echo "Triggering Upstream Declarative Pipeline"
+
+	      build 'declarative1'
+	}
+
+      
+      stage('8th. - Declarative Pipeline Done'){
+      
+           ehco "Completion to Declarative Pipeline"
+
+      }
 
 }
