@@ -69,7 +69,7 @@ node {
       
       stage('8th. - Declarative Pipeline Done'){
       
-           ehco "Completion to Declarative Pipeline"
+           echo "Completion to Declarative Pipeline"
 
       }
 
