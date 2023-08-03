@@ -70,6 +70,26 @@ pipeline {
 
 			 }
                   }  
-          }
+          
+                /*
+                stage(' 7. - Trigging the Scripted Pipeline '){		
+	              steps{
+		       		echo "Triggering Upstream Declarative Pipeline"	
+		   
+		                build 'scripted1' 
+			}
+		}
+
+
+                stage('8. - Scripted Pipeline Done'){		
+	             steps{
+		           echo "Completion to Scripted Pipeline"	
+
+                           }
+		  }
+
+		*/
+
+	  }
 
 }
