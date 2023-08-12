@@ -41,7 +41,7 @@ pipeline {
 		*/
                 
 
-                stage('4 - Storing Artifact in Nexus'){
+                stage('3 - Storing Artifact in Nexus'){
                         steps{
                                 echo "Keep artifact in Artifactory - Nexus"
                                 sh "mvn deploy"
@@ -49,7 +49,7 @@ pipeline {
                 }
 
 
-        	stage('5 - Needing Confirmation before'){
+        	stage('4 - Needing Confirmation before'){
 			steps{
 				echo "Needing Confimation"
                                 
@@ -60,7 +60,7 @@ pipeline {
 		}
 	       
 	        	
-		stage('6 - Deploying Artifact to Tomcat '){
+		stage('5 - Deploying Artifact to Tomcat '){
                         steps{
                                 echo "Deploy an artifact to Tomcat"
                                 
