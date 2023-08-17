@@ -65,12 +65,12 @@ pipeline {
                                 echo "Deploy an artifact to Tomcat"
                                 
                                 deploy adapters: [tomcat9(credentialsId: 'Tomcat_Admin', 
-				                 path: '', url: 'http://192.168.1.103:8800/')], 
+				                 path: '', url: 'http://192.168.33.32:8800/')], 
 		                		 contextPath: null, onFailure: false, war: '**/*.war'
 			 }
                   } 
 
-
+            /*
 		stage('5 - Deploying Artifact to Tomcat - B '){
                         steps{
                                 echo "Deploy an artifact to Tomcat"
@@ -81,7 +81,7 @@ pipeline {
                          }
                   }
 
-          
+           */
                 /*
                 stage(' 7. - Trigging the Scripted Pipeline '){		
 	              steps{
