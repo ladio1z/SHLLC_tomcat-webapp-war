@@ -76,7 +76,7 @@ pipeline {
                                 echo "Deploy an artifact to Tomcat B"
                                            
                                 deploy adapters: [tomcat9(credentialsId: 'Tomcat_Admin',
-                                                 path: '', url: 'http://192.168.33.27:8810/')],
+                                                 path: '', url: 'http://192.168.33.80:8180/')],
                                                  contextPath: null, onFailure: false, war: '**/*.war'
                          }
                   }
