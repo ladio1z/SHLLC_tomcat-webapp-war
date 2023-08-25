@@ -48,7 +48,7 @@ pipeline {
                         }
                 }
 
-
+              /*
         	stage('4 - Needing Confirmation before'){
 			steps{
 				echo "Needing Confimation"
@@ -58,7 +58,9 @@ pipeline {
 			        }           
 			}
 		}
-	       
+	       */
+
+
 	        	
 		stage('5 - Deploying Artifact to Tomcat - A '){
                         steps{
